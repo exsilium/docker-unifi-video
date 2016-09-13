@@ -52,6 +52,9 @@ else
   -p $IP:6666:6666 \
   -p $IP:7080:7080 \
   -p $IP:7443:7443 \
+  -p $IP:7445:7445 \
+  -p $IP:7446:7446 \
+  -p $IP:7447:7447 \
   --name $NAME \
   exsilium/unifi-video:$VERSION
 fi

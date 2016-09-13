@@ -28,7 +28,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Interfaces to outside
 VOLUME ["/var/lib/mongodb", "/var/lib/unifi-video", "/var/log/unifi-video"]
-EXPOSE 6666 7080 7443
+EXPOSE 6666 7080 7443 7445 7446 7447
 
 CMD ["/sbin/my_init"]
 
@@ -46,4 +46,7 @@ CMD ["/sbin/my_init"]
 # -p 127.0.0.1:6666:6666 \
 # -p 127.0.0.1:7080:7080 \
 # -p 127.0.0.1:7443:7443 \
+# -p 127.0.0.1:7445:7445 \
+# -p 127.0.0.1:7446:7446 \
+# -p 127.0.0.1:7447:7447 \
 # exsilium/unifi-video:v3.4.0
