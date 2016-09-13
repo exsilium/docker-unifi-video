@@ -34,15 +34,15 @@ CMD ["/sbin/my_init"]
 
 # Make sure you have created the target directories:
 #
-# 1. /usr/local/unifi-video/unifi-video
-# 2. /usr/local/unifi-video/mongodb
-# 3. /usr/local/unifi-video/log
+# 1. ~/Applications/unifi-video/unifi-video
+# 2. ~/Applications/unifi-video/mongodb
+# 3. ~/Applications/unifi-video/log
 #
 # Run container by:
 # docker run -d --privileged \
-# -v /usr/local/unifi-video/mongodb:/var/lib/mongodb \
-# -v /usr/local/unifi-video/unifi-video:/var/lib/unifi-video \
-# -v /usr/local/unifi-video/log:/var/log/unifi-video \
+# -v ~/Applications/unifi-video/mongodb:/var/lib/mongodb \
+# -v ~/Applications/unifi-video/unifi-video:/var/lib/unifi-video \
+# -v ~/Applications/unifi-video/log:/var/log/unifi-video \
 # -p 127.0.0.1:6666:6666 \
 # -p 127.0.0.1:7080:7080 \
 # -p 127.0.0.1:7443:7443 \

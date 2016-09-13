@@ -1,6 +1,7 @@
 #!/bin/bash
 
-BASEDIR=/usr/local/unifi-video
+BASEDIR=~/Applications/unifi-video
+IP=127.0.0.1
 
 NAME=unifi-video
 VERSION=v3.4.0
@@ -8,12 +9,12 @@ VERSION=v3.4.0
 # Run docker once to create a container and return the ID
 # For following startups, use 'docker start <containerID>'
 
-CONTAINER=`docker ps --filter ancestor=exsilium/unifi-video:$VERSION --format "{{.ID}}"`
+CONTAINER=`docker ps -a --filter ancestor=exsilium/unifi-video:$VERSION --format "{{.ID}}"`
 
 if [ ! -z $CONTAINER ]
 then
   echo "There seems to be an existing container with the ancestor image. Please use 'docker start <containerID> to start it."
-  docker ps --filter ancestor=exsilium/unifi-video:$VERSION --format "table {{.ID}}\t{{.Names}}\t{{.CreatedAt}}\t{{.Status}}"
+  docker ps -a --filter ancestor=exsilium/unifi-video:$VERSION --format "table {{.ID}}\t{{.Names}}\t{{.CreatedAt}}\t{{.Status}}"
   echo "==> Exiting without doing anything!"
 else
   printf "Checking for Host data volumes: MongoDB-"
@@ -48,9 +49,9 @@ else
   -v $BASEDIR/mongodb:/var/lib/mongodb \
   -v $BASEDIR/unifi-video:/var/lib/unifi-video \
   -v $BASEDIR/log:/var/log/unifi-video \
-  -p 127.0.0.1:6666:6666 \
-  -p 127.0.0.1:7080:7080 \
-  -p 127.0.0.1:7443:7443 \
+  -p $IP:6666:6666 \
+  -p $IP:7080:7080 \
+  -p $IP:7443:7443 \
   --name $NAME \
   exsilium/unifi-video:$VERSION
 fi
