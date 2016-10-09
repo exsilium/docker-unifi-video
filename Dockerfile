@@ -49,4 +49,6 @@ CMD ["/sbin/my_init"]
 # -p 127.0.0.1:7445:7445 \
 # -p 127.0.0.1:7446:7446 \
 # -p 127.0.0.1:7447:7447 \
+# --name unifi-video \
+# --restart=unless-stopped \
 # exsilium/unifi-video:v3.4.0
