@@ -2,7 +2,7 @@
 # https://github.com/jstn/docker-unifi-video/blob/master/Dockerfile (0e8dbcc)
 
 # Trusty
-FROM phusion/baseimage:0.9.18
+FROM phusion/baseimage:latest
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -12,7 +12,7 @@ RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 RUN curl -sS http://dl.ubnt.com/firmwares/unifi-video/3.5.2/unifi-video_3.5.2~Ubuntu14.04_amd64.deb > /tmp/unifi-video.deb
 
 # Install unifi-video dependencies and the core package itself
-RUN apt-get install -y mongodb-server openjdk-7-jre-headless jsvc
+RUN apt-get install -y mongodb-server openjdk-8-jre-headless jsvc sudo
 RUN dpkg -i /tmp/unifi-video.deb && rm /tmp/unifi-video.deb
 RUN apt-get update && apt-get -f install
 
@@ -25,6 +25,9 @@ RUN printf "#!/bin/sh\nexec /usr/sbin/unifi-video --nodetach start" | tee /etc/s
 RUN chmod 500 /etc/service/mongodb/run /etc/service/unifi-video/run
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Edit /usr/sbin/unifi-video
+RUN sed -i '45s/java/openjdk/' /usr/sbin/unifi-video
 
 # Interfaces to outside
 VOLUME ["/var/lib/mongodb", "/var/lib/unifi-video", "/var/log/unifi-video"]
