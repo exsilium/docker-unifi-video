@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Bring in the latest and greatest
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
-RUN curl -sS http://dl.ubnt.com/firmwares/unifi-video/3.5.0/unifi-video_3.5.0~Ubuntu14.04_amd64.deb > /tmp/unifi-video.deb
+RUN curl -sS http://dl.ubnt.com/firmwares/unifi-video/3.5.1/unifi-video_3.5.1~Ubuntu14.04_amd64.deb > /tmp/unifi-video.deb
 
 # Install unifi-video dependencies and the core package itself
 RUN apt-get install -y mongodb-server openjdk-7-jre-headless jsvc
@@ -51,4 +51,4 @@ CMD ["/sbin/my_init"]
 # -p 127.0.0.1:7447:7447 \
 # --name unifi-video \
 # --restart=unless-stopped \
-# exsilium/unifi-video:v3.5.0
+# exsilium/unifi-video:v3.5.1
