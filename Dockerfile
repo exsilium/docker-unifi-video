@@ -27,7 +27,7 @@ RUN chmod 500 /etc/service/mongodb/run /etc/service/unifi-video/run
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Edit /usr/sbin/unifi-video
-RUN sed -i '45s/java/openjdk/' /usr/sbin/unifi-video
+RUN sed -i '52s/java/openjdk/' /usr/sbin/unifi-video
 
 # Interfaces to outside
 VOLUME ["/var/lib/mongodb", "/var/lib/unifi-video", "/var/log/unifi-video"]
