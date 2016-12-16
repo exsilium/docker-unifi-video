@@ -10,7 +10,7 @@ VERSION=v3.5.2
 # Run docker once to create a container and return the ID
 # For following startups, use 'docker start <containerID>'
 
-docker build -t "gdlin:unifi-video" .
+docker build -t "gdlin/unifi-video:$VERSION" .
 
 CONTAINER=`docker ps -a --filter ancestor=gdlin/unifi-video:$VERSION --format "{{.ID}}"`
 
@@ -61,5 +61,5 @@ else
   -p $IP:7447:7447 \
   --name $NAME \
   --restart=unless-stopped \
-  gdlin/unifi-video
+  gdlin/unifi-video:$VERSION
 fi
