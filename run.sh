@@ -1,7 +1,7 @@
 #!/bin/bash
 
 BASEDIR=/opt/unifi-video
-DATADIR=/mnt/md0/nvr
+DATADIR=/mnt/md0/nvrLocal
 IP=10.8.3.2
 
 NAME=unifi-video
