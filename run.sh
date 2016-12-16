@@ -1,7 +1,8 @@
 #!/bin/bash
 
-BASEDIR=~/Applications/unifi-video
-IP=0.0.0.0
+BASEDIR=/opt/unifi-video
+DATADIR=/mnt/md0/nvr
+IP=10.8.3.2
 
 NAME=unifi-video
 VERSION=v3.5.2
@@ -49,6 +50,7 @@ else
   -v $BASEDIR/mongodb:/var/lib/mongodb \
   -v $BASEDIR/unifi-video:/var/lib/unifi-video \
   -v $BASEDIR/log:/var/log/unifi-video \
+  -v $DATADIR:/data \
   -p $IP:6666:6666 \
   -p $IP:7080:7080 \
   -p $IP:7443:7443 \
@@ -56,6 +58,6 @@ else
   -p $IP:7446:7446 \
   -p $IP:7447:7447 \
   --name $NAME \
-  --restart=unless-stopped \
-  exsilium/unifi-video:$VERSION
+  --restart=unless-stopped
+#  exsilium/unifi-video:$VERSION
 fi
