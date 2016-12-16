@@ -61,5 +61,5 @@ else
   -p $IP:7447:7447 \
   --name $NAME \
   --restart=unless-stopped
-#  exsilium/unifi-video:$VERSION
+  gdlin/unifi-video:$VERSION
 fi
