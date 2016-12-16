@@ -60,6 +60,6 @@ else
   -p $IP:7446:7446 \
   -p $IP:7447:7447 \
   --name $NAME \
-  --restart=unless-stopped
+  --restart=unless-stopped \
   gdlin/unifi-video:$VERSION
 fi
