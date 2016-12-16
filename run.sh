@@ -10,7 +10,9 @@ VERSION=v3.5.2
 # Run docker once to create a container and return the ID
 # For following startups, use 'docker start <containerID>'
 
-CONTAINER=`docker ps -a --filter ancestor=exsilium/unifi-video:$VERSION --format "{{.ID}}"`
+docker build -t "gdlin:unifi-video" .
+
+CONTAINER=`docker ps -a --filter ancestor=gdlin/unifi-video:$VERSION --format "{{.ID}}"`
 
 if [ ! -z $CONTAINER ]
 then
