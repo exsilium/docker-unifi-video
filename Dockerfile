@@ -1,18 +1,18 @@
 # This Dockerfile has been created based on the following work by Justin Ouellette:
 # https://github.com/jstn/docker-unifi-video/blob/master/Dockerfile (0e8dbcc)
 
-# Trusty
-FROM phusion/baseimage:0.9.18
+# Xenial Xerus
+FROM phusion/baseimage:latest
 
 ENV DEBIAN_FRONTEND noninteractive
 
 # Bring in the latest and greatest
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
-RUN curl -sS http://dl.ubnt.com/firmwares/unifi-video/3.5.2/unifi-video_3.5.2~Ubuntu14.04_amd64.deb > /tmp/unifi-video.deb
+RUN curl -sS http://dl.ubnt.com/firmwares/unifi-video/3.6.0/unifi-video_3.6.0~Ubuntu16.04_amd64.deb > /tmp/unifi-video.deb
 
 # Install unifi-video dependencies and the core package itself
-RUN apt-get install -y mongodb-server openjdk-7-jre-headless jsvc
+RUN apt-get install -y mongodb-server openjdk-8-jre-headless jsvc sudo
 RUN dpkg -i /tmp/unifi-video.deb && rm /tmp/unifi-video.deb
 RUN apt-get update && apt-get -f install
 
@@ -43,12 +43,12 @@ CMD ["/sbin/my_init"]
 # -v ~/Applications/unifi-video/mongodb:/var/lib/mongodb \
 # -v ~/Applications/unifi-video/unifi-video:/var/lib/unifi-video \
 # -v ~/Applications/unifi-video/log:/var/log/unifi-video \
-# -p 127.0.0.1:6666:6666 \
-# -p 127.0.0.1:7080:7080 \
-# -p 127.0.0.1:7443:7443 \
-# -p 127.0.0.1:7445:7445 \
-# -p 127.0.0.1:7446:7446 \
-# -p 127.0.0.1:7447:7447 \
+# -p 6666:6666 \
+# -p 7080:7080 \
+# -p 7443:7443 \
+# -p 7445:7445 \
+# -p 7446:7446 \
+# -p 7447:7447 \
 # --name unifi-video \
 # --restart=unless-stopped \
-# exsilium/unifi-video:v3.5.2
+# exsilium/unifi-video:v3.6.0
