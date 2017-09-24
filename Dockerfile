@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Bring in the latest and greatest
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
 
-RUN curl -sS https://dl.ubnt.com/firmwares/unifi-video/3.7.3/unifi-video_3.7.3-Ubuntu16.04_amd64.deb > /tmp/unifi-video.deb
+RUN curl -sS https://dl.ubnt.com/firmwares/ufv/v3.8.0/unifi-video.Ubuntu16.04_amd64.v3.8.0.deb > /tmp/unifi-video.deb
 
 # Install unifi-video dependencies and the core package itself
 RUN apt-get install -y mongodb-server openjdk-8-jre-headless jsvc sudo
@@ -28,7 +28,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Interfaces to outside
 VOLUME ["/var/lib/mongodb", "/var/lib/unifi-video", "/var/log/unifi-video"]
-EXPOSE 6666 7080 7443 7445 7446 7447
+EXPOSE 6666 7080 7442 7443 7445 7446 7447
 
 CMD ["/sbin/my_init"]
 
@@ -45,10 +45,11 @@ CMD ["/sbin/my_init"]
 # -v ~/Applications/unifi-video/log:/var/log/unifi-video \
 # -p 6666:6666 \
 # -p 7080:7080 \
+# -p 7442:7442 \
 # -p 7443:7443 \
 # -p 7445:7445 \
 # -p 7446:7446 \
 # -p 7447:7447 \
 # --name unifi-video \
 # --restart=unless-stopped \
-# exsilium/unifi-video:v3.7.3
+# exsilium/unifi-video:v3.8.0
