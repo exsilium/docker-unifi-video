@@ -6,7 +6,7 @@ FROM phusion/baseimage:latest
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN curl -sS https://dl.ubnt.com/firmwares/ufv/v3.8.5/unifi-video.Ubuntu16.04_amd64.v3.8.5.deb > /tmp/unifi-video.deb
+RUN curl -sS https://dl.ubnt.com/firmwares/ufv/v3.9.0/unifi-video.Ubuntu16.04_amd64.v3.9.0.deb > /tmp/unifi-video.deb
 
 # Bring in the latest and greatest
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
@@ -52,4 +52,4 @@ CMD ["/sbin/my_init"]
 # -p 7447:7447 \
 # --name unifi-video \
 # --restart=unless-stopped \
-# exsilium/unifi-video:v3.8.5
+# exsilium/unifi-video:v3.9.0
