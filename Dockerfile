@@ -26,6 +26,9 @@ RUN chmod 500 /etc/service/mongodb/run /etc/service/unifi-video/run
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# For Centos
+RUN sed -i -e 's/ulimit -H/ulimit/g' /usr/sbin/unifi-video
+
 # Interfaces to outside
 VOLUME ["/var/lib/mongodb", "/var/lib/unifi-video", "/var/log/unifi-video"]
 EXPOSE 6666 7080 7442 7443 7445 7446 7447

@@ -1,7 +1,8 @@
 #!/bin/bash
 
-BASEDIR=~/Applications/unifi-video
-IP=0.0.0.0
+BASEDIR=/opt/unifi-video
+DATADIR=/mnt/md0/nvrLocal
+IP=10.8.3.2
 
 NAME=unifi-video
 VERSION=v3.9.2
@@ -9,7 +10,9 @@ VERSION=v3.9.2
 # Run docker once to create a container and return the ID
 # For following startups, use 'docker start <containerID>'
 
-CONTAINER=`docker ps -a --filter ancestor=exsilium/unifi-video:$VERSION --format "{{.ID}}"`
+docker build -t "gdlin/unifi-video:$VERSION" .
+
+CONTAINER=`docker ps -a --filter ancestor=gdlin/unifi-video:$VERSION --format "{{.ID}}"`
 
 if [ ! -z $CONTAINER ]
 then
@@ -49,6 +52,7 @@ else
   -v $BASEDIR/mongodb:/var/lib/mongodb \
   -v $BASEDIR/unifi-video:/var/lib/unifi-video \
   -v $BASEDIR/log:/var/log/unifi-video \
+  -v $DATADIR:/data \
   -p $IP:6666:6666 \
   -p $IP:7080:7080 \
   -p $IP:7442:7442 \
@@ -58,5 +62,5 @@ else
   -p $IP:7447:7447 \
   --name $NAME \
   --restart=unless-stopped \
-  exsilium/unifi-video:$VERSION
+  gdlin/unifi-video:$VERSION
 fi
