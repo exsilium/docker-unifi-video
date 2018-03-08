@@ -6,7 +6,7 @@ FROM phusion/baseimage:latest
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN curl -sS https://dl.ubnt.com/firmwares/ufv/v3.9.2/unifi-video.Ubuntu16.04_amd64.v3.9.2.deb > /tmp/unifi-video.deb
+RUN curl -sS https://dl.ubnt.com/firmwares/ufv/v3.9.3/unifi-video.Ubuntu16.04_amd64.v3.9.3.deb > /tmp/unifi-video.deb
 
 # Bring in the latest and greatest
 RUN apt-get update && apt-get upgrade -y -o Dpkg::Options::="--force-confold"
@@ -35,14 +35,13 @@ CMD ["/sbin/my_init"]
 # Make sure you have created the target directories:
 #
 # 1. ~/Applications/unifi-video/unifi-video
-# 2. ~/Applications/unifi-video/mongodb
-# 3. ~/Applications/unifi-video/log
+# 2. ~/Applications/unifi-video/unifi-video/logs
+# 3. ~/Applications/unifi-video/mongodb
 #
 # Run container by:
 # docker run -d --privileged \
 # -v ~/Applications/unifi-video/mongodb:/var/lib/mongodb \
 # -v ~/Applications/unifi-video/unifi-video:/var/lib/unifi-video \
-# -v ~/Applications/unifi-video/log:/var/log/unifi-video \
 # -p 6666:6666 \
 # -p 7080:7080 \
 # -p 7442:7442 \
@@ -52,4 +51,4 @@ CMD ["/sbin/my_init"]
 # -p 7447:7447 \
 # --name unifi-video \
 # --restart=unless-stopped \
-# exsilium/unifi-video:v3.9.2
+# exsilium/unifi-video:v3.9.3
