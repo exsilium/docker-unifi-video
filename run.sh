@@ -4,7 +4,7 @@ BASEDIR=~/Applications/unifi-video
 IP=0.0.0.0
 
 NAME=unifi-video
-VERSION=v3.9.3
+VERSION=v3.9.4
 
 # Run docker once to create a container and return the ID
 # For following startups, use 'docker start <containerID>'
