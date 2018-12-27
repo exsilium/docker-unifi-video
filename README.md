@@ -19,15 +19,15 @@ Because /usr/local is reserved for Docker, the example demonstrates installation
 **NB!** If you receive permission errors when executing commands, precede them with `sudo`
 
 - Create the `~/Applications/unifi-video` directory
-- Run in Terminal: `docker pull exsilium/unifi-video:v3.9.9`
+- Run in Terminal: `docker pull exsilium/unifi-video:v3.9.11`
 
 ```
 `$ docker images
 REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
-exsilium/unifi-video   v3.9.9              1cbeb1e369da        44 minutes ago      869.9 MB
+exsilium/unifi-video   v3.9.11            1cbeb1e369da        44 minutes ago      869.9 MB
 ```
 
-- (Optional) Download\Save `run.sh` from [here](https://raw.githubusercontent.com/exsilium/docker-unifi-video/v3.9.9/run.sh)
+- (Optional) Download\Save `run.sh` from [here](https://raw.githubusercontent.com/exsilium/docker-unifi-video/v3.9.11/run.sh)
 - Create the following host data directories under `~/Applications/unifi-video`
     - `mkdir mongodb`
     - `mkdir unifi-video`
@@ -46,18 +46,18 @@ exsilium/unifi-video   v3.9.9              1cbeb1e369da        44 minutes ago   
 
 By default, Docker provides network isolation and due to that the automatic discovery will not work. Directly access your camera IP and enter the host IP of your server where the unifi-video docker image is running.
 
-## Upgrade from 3.x.x to 3.9.9
+## Upgrade from 3.x.x to 3.9.11
 
 **NB!** Always create a backup before trying to upgrade!
 **NB!** Upgrade scenarios over multiple versions have not been tested!
 **NB!** Make sure to read release notes prior to upgrade!
-**NB!** Note that, when upgrading to v3.9.9, a new port 7442 was added in v3.8 for secure camera communications. Make sure docker maps this new port when starting and that you handle any additional routing settings you may have to that port.
+**NB!** Note that, when upgrading to v3.9.11, a new port 7442 was added in v3.8 for secure camera communications. Make sure docker maps this new port when starting and that you handle any additional routing settings you may have to that port.
 
 - Stop the running container
 - Backup your Host Data Volumes (`~/Applications/unifi-video`)
-- Pull the latest image `docker pull exsilium/unifi-video:v3.9.9`
+- Pull the latest image `docker pull exsilium/unifi-video:v3.9.11`
 - Rename the old container to something else than `unifi-video`. Refer to [docker rename](https://docs.docker.com/engine/reference/commandline/rename/) command
-- Update the `run.sh` to reflect the new version (v3.9.9)
+- Update the `run.sh` to reflect the new version (v3.9.11)
 - Start the new image against the same Host Data Volumes by using `run.sh` or manually calling `docker run` with appropriate arguments.
 
 ## Need help?
