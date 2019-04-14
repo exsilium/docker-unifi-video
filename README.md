@@ -19,15 +19,15 @@ Because /usr/local is reserved for Docker, the example demonstrates installation
 **NB!** If you receive permission errors when executing commands, precede them with `sudo`
 
 - Create the `~/Applications/unifi-video` directory
-- Run in Terminal: `docker pull exsilium/unifi-video:v3.10.1`
+- Run in Terminal: `docker pull exsilium/unifi-video:v3.10.2`
 
 ```
 `$ docker images
 REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
-exsilium/unifi-video   v3.10.1            1cbeb1e369da        44 minutes ago      869.9 MB
+exsilium/unifi-video   v3.10.2            1cbeb1e369da        44 minutes ago      869.9 MB
 ```
 
-- (Optional) Download\Save `run.sh` from [here](https://raw.githubusercontent.com/exsilium/docker-unifi-video/v3.10.1/run.sh)
+- (Optional) Download\Save `run.sh` from [here](https://raw.githubusercontent.com/exsilium/docker-unifi-video/v3.10.2/run.sh)
 - Create the following host data directories under `~/Applications/unifi-video`
     - `mkdir mongodb`
     - `mkdir unifi-video`
@@ -46,18 +46,18 @@ exsilium/unifi-video   v3.10.1            1cbeb1e369da        44 minutes ago    
 
 By default, Docker provides network isolation and due to that the automatic discovery will not work. Directly access your camera IP and enter the host IP of your server where the unifi-video docker image is running.
 
-## Upgrade from 3.x.x to 3.10.1
+## Upgrade from 3.x.x to 3.10.2
 
 **NB!** Always create a backup before trying to upgrade!
 **NB!** Upgrade scenarios over multiple versions have not been tested!
 **NB!** Make sure to read release notes prior to upgrade!
-**NB!** Note that, when upgrading to v3.10.1 from previous minor version, you first need to upgrade to v3.9.12.
+**NB!** Note that, when upgrading to v3.10.2 from previous minor version, you first need to upgrade to v3.9.12.
 
 - Stop the running container
 - Backup your Host Data Volumes (`~/Applications/unifi-video`)
-- Pull the latest image `docker pull exsilium/unifi-video:v3.10.1`
+- Pull the latest image `docker pull exsilium/unifi-video:v3.10.2`
 - Rename the old container to something else than `unifi-video`. Refer to [docker rename](https://docs.docker.com/engine/reference/commandline/rename/) command
-- Update the `run.sh` to reflect the new version (v3.10.1)
+- Update the `run.sh` to reflect the new version (v3.10.2)
 - Start the new image against the same Host Data Volumes by using `run.sh` or manually calling `docker run` with appropriate arguments.
 
 ## Need help?
