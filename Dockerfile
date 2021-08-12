@@ -6,7 +6,7 @@ FROM phusion/baseimage:0.11
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN curl -sS https://dl.ubnt.com/firmwares/ufv/v3.10.11/unifi-video.Ubuntu18.04_amd64.v3.10.11.deb > /tmp/unifi-video.deb
+RUN curl -sS https://dl.ubnt.com/firmwares/ufv/v3.10.12/unifi-video.Ubuntu18.04_amd64.v3.10.12.deb > /tmp/unifi-video.deb
 RUN curl -sS http://launchpadlibrarian.net/505954411/openjdk-8-jre-headless_8u275-b01-0ubuntu1~18.04_amd64.deb > /tmp/jre.deb
 
 # Bring in the latest and greatest
@@ -53,4 +53,4 @@ CMD ["/sbin/my_init"]
 # -p 7447:7447 \
 # --name unifi-video \
 # --restart=unless-stopped \
-# exsilium/unifi-video:v3.10.11
+# exsilium/unifi-video:v3.10.12
