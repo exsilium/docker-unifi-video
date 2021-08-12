@@ -19,19 +19,19 @@ Because /usr/local is reserved for Docker, the example demonstrates installation
 **NB!** If you receive permission errors when executing commands, precede them with `sudo`
 
 - Create the `~/Applications/unifi-video` directory
-- Run in Terminal: `docker pull exsilium/unifi-video:v3.10.10`
+- Run in Terminal: `docker pull exsilium/unifi-video:v3.10.11`
 
 ```
 `$ docker images
 REPOSITORY             TAG                 IMAGE ID            CREATED             SIZE
-exsilium/unifi-video   v3.10.10            1cbeb1e369da        44 minutes ago      869.9 MB
+exsilium/unifi-video   v3.10.11            1cbeb1e369da        44 minutes ago      869.9 MB
 ```
 
-- (Optional) Download\Save `run.sh` from [here](https://raw.githubusercontent.com/exsilium/docker-unifi-video/v3.10.10/run.sh)
+- (Optional) Download\Save `run.sh` from [here](https://raw.githubusercontent.com/exsilium/docker-unifi-video/v3.10.11/run.sh)
 - Create the following host data directories under `~/Applications/unifi-video`
     - `mkdir mongodb`
     - `mkdir unifi-video`
-    - `mkdir log`
+    - `mkdir unifi-video/logs`
 - Review and edit `run.sh` to make sure the BASEDIR and IP are reflecting your setup. The default 0.0.0.0 binds the ports to all interfaces.
 - Execute `./run.sh` to run the container or execute `docker run` with the appropriate parameters.
 
@@ -54,11 +54,11 @@ With the 3.10.x images, there has been some significant changes to underlying OS
 **NB!** MongoDB will be upgraded from 2.6 to 3.6
 **NB!** Make sure you are on v3.9.12
 
-- Use the Unifi-Video web interface to launch an upgrade, this upgrade will not finish successfully, but will upgrade the database collections to the new `v3.10.10` format
+- Use the Unifi-Video web interface to launch an upgrade, this upgrade will not finish successfully, but will upgrade the database collections to the new `v3.10.11` format
 - Login to the docker container and make a `mongodump` of the `av` database. E.g: `mongodump --port 7441 -d av -o /var/lib/unifi-video/db.backup`
 - Shutdown the Docker container
 - Delete the equivalent of `/var/lib/unifi-video/db/*` from the Host volume
-- Start the version v3.10.10 container
+- Start the version v3.10.11 container
 - Upon start a new set of collections will be populated (similar to a new installation). Relogin to the Docker container to import the previously created dump: `mongorestore --drop --port 7441 -d av /var/lib/unifi-video/db.backup/av`
 - Restart the container.
 
@@ -67,7 +67,7 @@ With the 3.10.x images, there has been some significant changes to underlying OS
 **NB!** Always create a backup before trying to upgrade!
 **NB!** Upgrade scenarios over multiple versions have not been tested!
 **NB!** Make sure to read release notes prior to upgrade!
-**NB!** Note that, when upgrading to v3.10.10 from previous minor version, you first need to upgrade to v3.9.12.
+**NB!** Note that, when upgrading to v3.10.11 from previous minor version, you first need to upgrade to v3.9.12.
 
 - Stop the running container
 - Backup your Host Data Volumes (`~/Applications/unifi-video`)
